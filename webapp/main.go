@@ -60,7 +60,7 @@ func flipHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if *enableDelay {
-		delay = time.Duration(rand.Intn(5))
+		delay = time.Duration(rand.Intn(3))
 		time.Sleep(delay * time.Second)
 	}
 
@@ -83,6 +83,6 @@ func main() {
 	http.HandleFunc("/flip", flipHandler)
 	http.Handle("/metrics", promhttp.Handler())
 
-	log.Println("Starting server on :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("Starting server on :8081")
+	log.Fatal(http.ListenAndServe(":8081", nil))
 }
